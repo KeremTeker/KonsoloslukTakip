@@ -10,5 +10,6 @@ namespace Business.Abstract
     internal interface IAppointmentSiteService
     {
         List<AppointmentSite> GetAll();
+        AppointmentSite GetById(int appointmentSiteId);
     }
 }

@@ -24,5 +24,11 @@ namespace Business.Concrete
             return _appointmentSiteDal.GetAll();
 
         }
+
+        //Select * from AppointmentSites where AppointmentSiteId = 3
+        public AppointmentSite GetById(int appointmentSiteId)
+        {
+            return _appointmentSiteDal.Get(a=>a.AppointmentSiteId == appointmentSiteId);
+        }
     }
 }
