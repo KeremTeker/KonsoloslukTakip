@@ -3,6 +3,7 @@ using Business.Abstract;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Inmemory;
 using Entities.Concrete;
+using Entities.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,11 @@ namespace Business.Concrete
         public List<Appointment> GetAllByStatus(bool status)
         {
             return _appointmentDal.GetAll(p=>p.Status==status);
+        }
+
+        public List<AppointmentDetailDto> GetAppointmentDetails()
+        {
+            return _appointmentDal.GetAppointmentDetails();
         }
     }
 }

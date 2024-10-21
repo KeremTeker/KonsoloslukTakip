@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace Business.Abstract
         List<Appointment> GetAll();
         List<Appointment> GetAllByCategory(int id);
         List<Appointment> GetAllByStatus(bool status);
+        List<AppointmentDetailDto> GetAppointmentDetails();
     }
 }

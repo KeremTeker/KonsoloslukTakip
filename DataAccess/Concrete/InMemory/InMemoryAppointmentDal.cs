@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,11 @@ namespace DataAccess.Concrete.Inmemory
         }
 
         public List<Appointment> GetAll(Expression<Func<Appointment, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<AppointmentDetailDto> GetAppointmentDetails()
         {
             throw new NotImplementedException();
         }

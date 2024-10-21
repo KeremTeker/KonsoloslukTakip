@@ -16,15 +16,19 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            
-            //AppointmentTest();
+            AppointmentTest();
+            //AppointmentSiteTest();
+
+        }
+
+        private static void AppointmentSiteTest()
+        {
             AppointmentSiteManager appointmentSiteManager = new AppointmentSiteManager(new EfAppointmentSiteDal());
 
             foreach (var appointmentsite in appointmentSiteManager.GetAll())
             {
                 Console.WriteLine(appointmentsite.SiteName);
             }
-
         }
 
         private static void AppointmentTest()
@@ -32,9 +36,9 @@ namespace ConsoleUI
             //burada Appointment Managerin ctorundan ötürü bana bir product dal ver diyor bizde veriyoruz. Çünkü veriyi hangi veri verme yönteminden verecek bilmeli.
             AppointmentManager appointmentManager = new AppointmentManager(new EfAppointmentDal());
 
-            foreach (var appointment in appointmentManager.GetAllByStatus(false))
+            foreach (var appointment in appointmentManager.GetAppointmentDetails())
             {
-                Console.WriteLine(appointment.AppointmentId);
+                Console.WriteLine(appointment.CategoryName + "/" + appointment.TypeName + "/" + appointment.ConsulateName + "/" + appointment.AvailableDate + "/" + appointment.Status + "/" + appointment.LastUpdateDate);
             }
         }
     }
