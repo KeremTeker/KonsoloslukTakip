@@ -12,6 +12,8 @@ namespace DataAccess.Abstract
 {
     public interface IAppointmentDal:IEntityRepository<Appointment>
     {
+        //gerekli dtolar buraya yazılabilir burası buyüzden var direk Repositorye bağlamama sebeplerimizden biri de bu.
+
        List<AppointmentDetailDto> GetAppointmentDetails();
     }
 }
