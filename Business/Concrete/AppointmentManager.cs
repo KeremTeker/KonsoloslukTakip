@@ -57,30 +57,35 @@ namespace Business.Concrete
 
             if (DateTime.Now.Hour==2)
             {
-                return new ErrorDataResult();
+                return new ErrorDataResult<List<Appointment>>(Messages.MaintenanceTime);
             }
-            return new SuccessDataResult<List<Appointment>>(_appointmentDal.GetAll(),true, "Randevular listelendi");
+            //zaten success olduğu için true göndermiyoruz true default base.
+            return new SuccessDataResult<List<Appointment>>(_appointmentDal.GetAll(), Messages.AppointmentsListed);
 
         }
 
-        public List<Appointment> GetAllByCategory(int id)
+        public IDataResult<List<Appointment>> GetAllByCategory(int id)
         {
-            return _appointmentDal.GetAll(p=>p.VisaCategoryId==id);
+            return new SuccessDataResult<List<Appointment>> (_appointmentDal.GetAll(p=>p.VisaCategoryId==id));
         }
 
-        public List<Appointment> GetAllByStatus(bool status)
+        public IDataResult<List<Appointment>> GetAllByStatus(bool status)
         {
-            return _appointmentDal.GetAll(p=>p.Status==status);
+            return new SuccessDataResult<List<Appointment>> (_appointmentDal.GetAll(p=>p.Status==status));
         }
 
-        public List<AppointmentDetailDto> GetAppointmentDetails()
+        public IDataResult<List<AppointmentDetailDto>> GetAppointmentDetails()
         {
-            return _appointmentDal.GetAppointmentDetails();
+            if (DateTime.Now.Hour == 17)
+            {
+                return new ErrorDataResult<List<AppointmentDetailDto>>(Messages.MaintenanceTime);
+            }
+            return new SuccessDataResult<List<AppointmentDetailDto>> (_appointmentDal.GetAppointmentDetails());
         }
 
-        public Appointment GetById(int id)
+        public IDataResult<Appointment> GetById(int id)
         {
-            return _appointmentDal.Get(a=>a.AppointmentId == id);
+            return new SuccessDataResult<Appointment> (_appointmentDal.Get(a=>a.AppointmentId == id));
         }
     }
 }

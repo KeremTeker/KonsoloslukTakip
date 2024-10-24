@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace Business.Constants
     {
         public static string AppointmentAdded = "Randevu eklendi";
         public static string AppointmentDateInvalid = "Randevu tarihi geçersiz";
-
+        public static string MaintenanceTime = "Sistem bakımda" ;
+        public static string AppointmentsListed = "Randevular Listelendi";
     }
 }

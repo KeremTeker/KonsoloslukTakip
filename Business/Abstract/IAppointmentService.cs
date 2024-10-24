@@ -17,7 +17,7 @@ namespace Business.Abstract
         IDataResult<List<Appointment>> GetAll();
         IDataResult<List<Appointment>> GetAllByCategory(int id);
         IDataResult<List<Appointment>> GetAllByStatus(bool status);
-        IDataResult<List<Appointment>> GetAppointmentDetails();
+        IDataResult<List<AppointmentDetailDto>> GetAppointmentDetails();
 
         //void yerine IResult döndürüyoruz IResultın içinde isSucces ve Message var.
         IResult Add(Appointment appointment);
