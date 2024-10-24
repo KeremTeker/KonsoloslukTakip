@@ -11,13 +11,17 @@ namespace Business.Abstract
 {
     public interface IAppointmentService
     {
-        List<Appointment> GetAll();
-        List<Appointment> GetAllByCategory(int id);
-        List<Appointment> GetAllByStatus(bool status);
-        List<AppointmentDetailDto> GetAppointmentDetails();
+        //List<Appointment> GetAll();
+        //IResult olamaz çünkü datayı da döndürmeliyiz.
+        //Buyüzden IDataResult oluşturuz IResulttan kalıtım alacak message ve succes döndürecek ve kendisi generic olarak bir data listesi alacak.
+        IDataResult<List<Appointment>> GetAll();
+        IDataResult<List<Appointment>> GetAllByCategory(int id);
+        IDataResult<List<Appointment>> GetAllByStatus(bool status);
+        IDataResult<List<Appointment>> GetAppointmentDetails();
 
         //void yerine IResult döndürüyoruz IResultın içinde isSucces ve Message var.
         IResult Add(Appointment appointment);
-        Appointment GetById(int id);
+        //Appointment GetById(int id);
+        IDataResult <Appointment> GetById(int id);
     }
 }

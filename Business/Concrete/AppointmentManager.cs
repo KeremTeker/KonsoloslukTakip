@@ -1,5 +1,6 @@
 ﻿
 using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Inmemory;
@@ -30,7 +31,8 @@ namespace Business.Concrete
             DateOnly today = DateOnly.FromDateTime(DateTime.Now);
             if (appointment.AvailableDate>today)
             {
-                return new ErrorResult("Gelecek tarih eklenemez");
+                //"randevu ratihi geçersiz" bu şekilde yapmak yerine magic string kullanıyoruz çünkü bu mesajlar heryerde olacak hem ilerde değiştirirken kolay olacak hemde mesajlarımız standartize olacak.
+                return new ErrorResult(Messages.AppointmentDateInvalid);
             }
 
             _appointmentDal.Add(appointment);
@@ -39,13 +41,25 @@ namespace Business.Concrete
             //return new Result(true,"Ürün eklendi");
 
             //apiye gidecek response işi.
-            return new SuccessResult("Ürün eklendi");
+            return new SuccessResult(Messages.AppointmentAdded);
         }
 
-        public List<Appointment> GetAll()
+        //public List<Appointment> GetAll()
+        //{
+        //    //iş kodları
+        //    return _appointmentDal.GetAll();
+
+        //}
+
+        public IDataResult<List<Appointment>> GetAll()
         {
             //iş kodları
-            return _appointmentDal.GetAll();
+
+            if (DateTime.Now.Hour==2)
+            {
+                return new ErrorDataResult();
+            }
+            return new SuccessDataResult<List<Appointment>>(_appointmentDal.GetAll(),true, "Randevular listelendi");
 
         }
 
