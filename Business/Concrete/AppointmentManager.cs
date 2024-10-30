@@ -55,7 +55,7 @@ namespace Business.Concrete
         {
             //iş kodları
 
-            if (DateTime.Now.Hour==2)
+            if (DateTime.Now.Hour==17)
             {
                 return new ErrorDataResult<List<Appointment>>(Messages.MaintenanceTime);
             }

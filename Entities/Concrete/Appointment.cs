@@ -19,13 +19,13 @@ namespace Entities.Concrete
         public DateTime LastUpdateDate { get; set; }
 
         // Navigation properties
-        public Consulate Consulate { get; set; }
-        public VisaCategory VisaCategory { get; set; }
-        public VisaType VisaType { get; set; }
-        public AppointmentSite AppointmentSite { get; set; }
+        public Consulate? Consulate { get; set; }
+        public VisaCategory? VisaCategory { get; set; }
+        public VisaType? VisaType { get; set; }
+        public AppointmentSite? AppointmentSite { get; set; }
 
-        public ICollection<Notification> Notifications { get; set; }
-        public ICollection<ScrapeLog> ScrapeLogs { get; set; }
+        public ICollection<Notification>? Notifications { get; set; }
+        public ICollection<ScrapeLog>? ScrapeLogs { get; set; }
     }
 
 }
