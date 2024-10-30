@@ -6,6 +6,8 @@ using DataAccess.Concrete.EntitiyFramework;
 var builder = WebApplication.CreateBuilder(args);
 
 // IoC kayýtlarý buraya eklenir.
+//IOC yerine autofac yapýcaz
+//çünkü ilerde AOP kullanýcaz
 builder.Services.AddSingleton<IAppointmentService, AppointmentManager>();
 builder.Services.AddSingleton<IAppointmentDal, EfAppointmentDal>();
 
