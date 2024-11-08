@@ -21,15 +21,15 @@ namespace ConsoleUI
 
         }
 
-        private static void AppointmentSiteTest()
-        {
-            AppointmentSiteManager appointmentSiteManager = new AppointmentSiteManager(new EfAppointmentSiteDal());
+        //private static void AppointmentSiteTest()
+        //{
+        //    AppointmentSiteManager appointmentSiteManager = new AppointmentSiteManager(new EfAppointmentSiteDal());
 
-            foreach (var appointmentsite in appointmentSiteManager.GetAll())
-            {
-                Console.WriteLine(appointmentsite.SiteName);
-            }
-        }
+        //    foreach (var appointmentsite in appointmentSiteManager.GetAll())
+        //    {
+        //        Console.WriteLine(appointmentsite.SiteName);
+        //    }
+        //}
 
         private static void AppointmentTest()
         {

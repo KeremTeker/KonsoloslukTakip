@@ -14,8 +14,8 @@ namespace Entities.Concrete
         public string SiteName { get; set; }
         public string SiteUrl { get; set; }
 
-        public Country Country { get; set; }
+        public Country? Country { get; set; }
 
-        public ICollection<Appointment> Appointments { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,11 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    internal interface IAppointmentSiteService
+    public interface IAppointmentSiteService
     {
-        List<AppointmentSite> GetAll();
-        AppointmentSite GetById(int appointmentSiteId);
+        IDataResult<List<AppointmentSite>> GetAll();
+        IResult Add(AppointmentSite appointmentSite);
+        IDataResult<AppointmentSite> GetById(int id);
+        IResult Update(AppointmentSite appointmentSite);
     }
 }

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface ICityService
+    public interface IUserService
     {
-        IDataResult<List<City>> GetAll();
-        IResult Add(City city);
-        IDataResult<City> GetById(int id);
-        IResult Update(City city);
+        IDataResult<List<User>> GetAll();
+        IResult Add(User user);
+        IDataResult<User> GetById(int id);
+        IResult Update(User user);
     }
 }

@@ -22,6 +22,14 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AppointmentManager>().As<IAppointmentService>().SingleInstance();
             builder.RegisterType<EfAppointmentDal>().As<IAppointmentDal>().SingleInstance();
 
+            //City
+            builder.RegisterType<CityManager>().As<ICityService>().SingleInstance();
+            builder.RegisterType<EfCityDal>().As<ICityDal>().SingleInstance();
+
+            //AppointmentSite
+            builder.RegisterType<AppointmentSiteManager>().As<IAppointmentSiteService>().SingleInstance();
+            builder.RegisterType<EfAppointmentSiteDal>().As<IAppointmentSiteDal>().SingleInstance();
+
             //crosscuttinconcern olayı için (tam anlamadım)
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

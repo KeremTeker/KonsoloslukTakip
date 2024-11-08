@@ -35,6 +35,14 @@ namespace Business.Concrete
         {
             //varsa iş kodları buraya yazılır ekleme öncesi
 
+            if (CheckIfAppointmentCountOfVisaCategory(appointment.VisaCategoryId).Success)
+            {
+                _appointmentDal.Add(appointment);
+                return new SuccessResult(Messages.AppointmentAdded);
+            }
+            return new ErrorResult(Messages.AppointmentCountofCategoryError);
+
+
             //bunlar artık fluentvalidationda
             //DateOnly today = DateOnly.FromDateTime(DateTime.Now);
             //if (appointment.AvailableDate>today)
@@ -56,13 +64,13 @@ namespace Business.Concrete
             //ValidationTool.Validate(new AppointmentValidator(), appointment);
             //Validation, Logging, Transaction, Authorization Bunlar buraya yazılırsa çok karışır bunları attiribute vererek çalıştırabileceğimiz yapıyı kuracağız.
 
-            _appointmentDal.Add(appointment);
+            
 
             //methodun içinde döndürürken ctora iki adet parametre yolluyoruz. Bu yüzden resulta ctor eklememiz gerekiyor.
             //return new Result(true,"Ürün eklendi");
 
             //apiye gidecek response işi.
-            return new SuccessResult(Messages.AppointmentAdded);
+            
         }
 
         //public List<Appointment> GetAll()
@@ -108,5 +116,33 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Appointment>(_appointmentDal.Get(a => a.AppointmentId == id));
         }
+
+        [ValidationAspect(typeof(AppointmentValidator))]
+        public IResult Update(Appointment appointment)
+        {
+            //Parametre olarak girilen değerin VisaCategoryId olması
+            if (CheckIfAppointmentCountOfVisaCategory(appointment.VisaCategoryId).Success)
+            {
+
+            } 
+            throw new NotImplementedException();
+        }
+
+        private IResult CheckIfAppointmentCountOfVisaCategory(int visaCategoryId)
+        {
+            // Mevcut VisaCategoryId ile eklenmiş appointment sayısını kontrol et
+            //Select count(*) from appointments where visaCategoryId=1
+            //parametre olarak girilen değere eşit olan VisaCategoryId lerin sayısı
+            var existingAppointmentsCount = _appointmentDal.GetAll(a => a.VisaCategoryId == visaCategoryId).Count;
+
+            // Eğer 10 veya daha fazla ise hata mesajı döndür
+            if (existingAppointmentsCount >= 10)
+            {
+                return new ErrorResult(Messages.AppointmentCountofCategoryError);
+            }
+            return new SuccessResult();
+        }
+
+
     }
 }

@@ -23,5 +23,6 @@ namespace Business.Abstract
         IResult Add(Appointment appointment);
         //Appointment GetById(int id);
         IDataResult <Appointment> GetById(int id);
+        IResult Update(Appointment appointment);
     }
 }

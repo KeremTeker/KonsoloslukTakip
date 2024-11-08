@@ -17,7 +17,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(a => a.AvailableDate).NotEmpty();
             RuleFor(a => a.Status).NotEmpty();
             RuleFor(a => a.LastUpdateDate).LessThanOrEqualTo(DateTime.Now);
-            RuleFor(a => a.AvailableDate).GreaterThanOrEqualTo(today).When(a => a.VisaCategoryId == 1).WithMessage("Turistik vizenin tarihi gelecek olamaz.");
+            RuleFor(a => a.AvailableDate).GreaterThanOrEqualTo(today).When(a => a.VisaCategoryId == 1).WithMessage("Turistik vizenin tarihi gelecek olmalı.");
         }
     }
 }

@@ -12,6 +12,6 @@ namespace Entities.Concrete
         public int CityId { get; set; }
         public string CityName { get; set; }
 
-        public ICollection<CountryCity> CountryCities { get; set; }
+        public ICollection<CountryCity>? CountryCities { get; set; }
     }
 }
